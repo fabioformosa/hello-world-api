@@ -54,6 +54,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "hello-world-api.fullname" . }}
+            {{- if (hasKey .Values "secretNameAsEnvVar") }}
+            - secretRef:
+                name: {{ .Values.secretNameAsEnvVar }}
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
