@@ -15,12 +15,21 @@ public class HelloWorldController {
     @Value("${envName: undefined}")
     private String envName;
 
+    @Value("${secretOfLife: none}")
+    private String secretOfLife;
+
     @GetMapping("/")
     public String sayHello() throws UnknownHostException {
         String hostname = InetAddress.getLocalHost().getHostName();
         String greetingMessage = String.format("hello world, by the host %s running in the %s env", hostname, envName);
         log.info("Saying... {}", greetingMessage);
         return greetingMessage;
+    }
+
+    @GetMapping("/secret-of-life")
+    public String getTheSecretOfLife()  {
+        log.info("Returning the secret of life... {}", secretOfLife);
+        return secretOfLife;
     }
 
 }
