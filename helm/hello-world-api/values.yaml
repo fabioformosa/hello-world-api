@@ -6,6 +6,7 @@ replicaCount: 1
 
 image:
   repository: "fabioformosa/hello-world-api"
+  tag: latest
   pullPolicy: always
 
 imagePullSecrets: []
