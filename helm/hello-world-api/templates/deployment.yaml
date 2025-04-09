@@ -58,6 +58,21 @@ spec:
             - secretRef:
                 name: {{ .Values.secretNameAsEnvVar }}
             {{- end }}
+          volumeMounts:
+            {{- if (hasKey .Values "secretProviderClassName") }}
+            - name: hello-world-api-secret-volume
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+            {{- end }}
+      volumes:
+        {{- if (hasKey .Values "secretProviderClassName" ) }}
+        - name: hello-world-api-secret-volume
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Values.secretProviderClassName }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
