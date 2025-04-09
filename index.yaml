@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  hello-world-api:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-04-09T09:41:27.208070449Z"
+    description: A Helm chart for Kubernetes
+    digest: 8167f453d3e0ea0dbd4b1e72de3916959f12cfd1e832aa3f9e624ee7192a6646
+    name: hello-world-api
+    type: application
+    urls:
+    - https://github.com/fabioformosa/hello-world-api/releases/download/hello-world-api-0.0.1/hello-world-api-0.0.1.tgz
+    version: 0.0.1
+generated: "2025-04-09T09:41:27.20807621Z"
